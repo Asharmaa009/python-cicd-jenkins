@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Build') {
+            steps {
+                echo 'Building application'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'python3 -m pip install -r requirements.txt'
+                sh 'python3 -m pytest tests/'
+            }
+        }
+
+        stage('Success') {
+            steps {
+                echo 'Project completed successfully!'
+            }
+        }
+    }
+}
